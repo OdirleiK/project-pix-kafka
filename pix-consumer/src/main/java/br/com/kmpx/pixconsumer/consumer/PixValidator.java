@@ -8,6 +8,7 @@ import br.com.kmpx.pixconsumer.dto.PixDTO;
 import br.com.kmpx.pixconsumer.dto.PixStatus;
 import br.com.kmpx.pixconsumer.model.Key;
 import br.com.kmpx.pixconsumer.model.Pix;
+import br.com.kmpx.pixconsumer.model.Produto;
 import br.com.kmpx.pixconsumer.repositories.KeyRepository;
 import br.com.kmpx.pixconsumer.repositories.PixRepository;
 
@@ -20,21 +21,21 @@ public class PixValidator {
     @Autowired
     private PixRepository pixRepository;
 
-    @KafkaListener(topics = "PIX_TOPIC", groupId = "grupo")
-    public void processaPix(PixDTO pixDTO) {
-        System.out.println("Pix  recebido: " + pixDTO.getIdentifier());
+    @KafkaListener(topics = "pix.teste1", groupId = "groupPix")
+    public void processaPix(Produto produto) {
+        System.out.println("Pix  recebido: " + produto.toString());
 
-        Pix pix = pixRepository.findByIdentifier(pixDTO.getIdentifier());
+       // Pix pix = pixRepository.findByIdentifier(pixDTO.getIdentifier());
 
-        Key origem = keyRepository.findByChave(pixDTO.getChaveOrigem());
-        Key destino = keyRepository.findByChave(pixDTO.getChaveDestino());
+  //      Key origem = keyRepository.findByChave(pixDTO.getChaveOrigem());
+     //   Key destino = keyRepository.findByChave(pixDTO.getChaveDestino());
 
-        if (origem == null || destino == null) {
-            pix.setStatus(PixStatus.ERRO);
-        } else {
-            pix.setStatus(PixStatus.PROCESSADO);
-        }
-        pixRepository.save(pix);
+     //   if (origem == null || destino == null) {
+     //       pix.setStatus(PixStatus.ERRO);
+    //    } else {
+     //       pix.setStatus(PixStatus.PROCESSADO);
+    //    }
+      //  pixRepository.save(pix);
     }
 
 }

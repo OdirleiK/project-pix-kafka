@@ -17,14 +17,14 @@ public class PixService {
     @Autowired
     private final PixRepository pixRepository;
 
-    @Autowired
-    private final KafkaTemplate<String, PixDTO>  kafkaTemplate;
-
-    public PixDTO salvarPix(PixDTO pixDTO) {
-        pixRepository.save(Pix.toEntity(pixDTO));
-        kafkaTemplate.send("PIX_TOPIC", pixDTO.getIdentifier(), pixDTO);
-        System.out.println("PIX_TOPIC disparado");
-        return pixDTO;
-    }
+//    @Autowired
+//    private final KafkaTemplate<String, PixDTO>  kafkaTemplate;
+//
+//    public PixDTO salvarPix(PixDTO pixDTO) {
+//        pixRepository.save(Pix.toEntity(pixDTO));
+//        kafkaTemplate.send("pix.topic", pixDTO.getIdentifier(), pixDTO);
+//        System.out.println("pix.topic disparado");
+//        return pixDTO;
+//    }
 
 }

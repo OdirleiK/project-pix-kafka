@@ -3,6 +3,7 @@ package br.com.kmpx.pixproducer.config;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.apache.kafka.clients.admin.NewTopic;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringSerializer;
 import org.springframework.beans.factory.annotation.Value;
@@ -14,6 +15,7 @@ import org.springframework.kafka.core.ProducerFactory;
 import org.springframework.kafka.support.serializer.JsonSerializer;
 
 import br.com.kmpx.pixproducer.dto.PixDTO;
+import br.com.kmpx.pixproducer.model.Produto;
 
 @Configuration
 public class ProducerKafkaConfig {
@@ -21,20 +23,22 @@ public class ProducerKafkaConfig {
 	@Value(value = "${spring.kafka.bootstrap-servers:localhost:9092}")
     private String bootstrapAddress;
 	
-	public ProducerFactory<String, PixDTO> producerFactory() {
+	@Bean
+    public NewTopic createTopic(){
+        return new NewTopic("javatechie-demo", 3, (short) 1);
+    }
+	
+	@Bean
+	public ProducerFactory<String, Object> producerFactory() {
 		Map<String, Object> configProps = new HashMap<>();
-		configProps.put(
-				ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, 
-				bootstrapAddress);
-		configProps.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, 
-						StringSerializer.class);
-		configProps.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG,
-						JsonSerializer.class);
+		configProps.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapAddress);
+		configProps.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
+		configProps.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, JsonSerializer.class);
         return new DefaultKafkaProducerFactory<>(configProps);
 	}
 	
 	@Bean
-    public KafkaTemplate<String, PixDTO> kafkaTemplate() {
+    public KafkaTemplate<String, Object> kafkaTemplate() {
         return new KafkaTemplate<>(producerFactory());
     }
 }
