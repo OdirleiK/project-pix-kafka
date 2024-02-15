@@ -1,4 +1,4 @@
-package br.com.kmpx.pixconsumer.model;
+package br.com.kmpx.pixproducer.config.model;
 
 import lombok.Data;
 
