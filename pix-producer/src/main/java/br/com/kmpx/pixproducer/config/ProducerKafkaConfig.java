@@ -3,6 +3,7 @@ package br.com.kmpx.pixproducer.config;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.apache.kafka.clients.admin.NewTopic;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringSerializer;
 import org.springframework.beans.factory.annotation.Value;
@@ -20,6 +21,11 @@ public class ProducerKafkaConfig {
 
 	@Value(value = "${spring.kafka.bootstrap-servers:localhost:9092}")
     private String bootstrapAddress;
+	
+	@Bean
+    public NewTopic createTopic(){
+        return new NewTopic("pix-topic", 3, (short) 1);
+    }
 	
 	public ProducerFactory<String, PixDTO> producerFactory() {
 		Map<String, Object> configProps = new HashMap<>();

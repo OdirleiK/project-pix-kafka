@@ -22,7 +22,7 @@ public class PixService {
 
     public PixDTO salvarPix(PixDTO pixDTO) {
         pixRepository.save(Pix.toEntity(pixDTO));
-        kafkaTemplate.send("pix-topic", pixDTO.getIdentifier(), pixDTO);
+        kafkaTemplate.send("pix-topic", pixDTO);
         return pixDTO;
     }
 
