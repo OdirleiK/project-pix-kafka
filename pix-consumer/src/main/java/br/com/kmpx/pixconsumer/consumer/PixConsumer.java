@@ -36,17 +36,19 @@ public class PixConsumer {
 	public void consumePixMessage(PixDTO pixDTO) {
 		System.out.println("Pix  recebido: " + pixDTO.getIdentifier());
 
-        Pix pix = pixRepository.findByIdentifier(pixDTO.getIdentifier());
+//        Pix pix = pixRepository.findByIdentifier(pixDTO.getIdentifier());
+//
+//        Key origem = keyRepository.findByChave(pixDTO.getChaveOrigem());
+//        Key destino = keyRepository.findByChave(pixDTO.getChaveDestino());
 
-        Key origem = keyRepository.findByChave(pixDTO.getChaveOrigem());
-        Key destino = keyRepository.findByChave(pixDTO.getChaveDestino());
-
-        if (origem == null || destino == null) {
-            pix.setStatus(PixStatus.ERRO);
-            throw new KeyNotFoundException();
-        } else {
-            pix.setStatus(PixStatus.PROCESSADO);
-        }
-        pixRepository.save(pix);
+//        if (origem == null || destino == null) {
+//            pix.setStatus(PixStatus.ERRO);
+//            throw new KeyNotFoundException();
+//        } else {
+//            pix.setStatus(PixStatus.PROCESSADO);
+//        }
+        
+ //       pix.setStatus(PixStatus.PROCESSADO);
+ //       pixRepository.save(pix);
 	}
 }
