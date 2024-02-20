@@ -8,14 +8,15 @@ import org.springframework.kafka.support.serializer.JsonSerializer;
 
 import br.com.kmpx.pixstream.dto.PixDTO;
 
-public class PixSerdes extends WrapperSerde<PixDTO>{
+public class PixSerdes extends Serdes.WrapperSerde<PixDTO> {
 
-	public PixSerdes() { super(new JsonSerializer<>(), new JsonDeserializer<>(PixDTO.class));
-	}
-	
-	public static Serde<PixDTO> serdes() {
-		JsonSerializer<PixDTO> serializer = new JsonSerializer<>();
-		JsonDeserializer<PixDTO> deserializer = new JsonDeserializer<>(PixDTO.class);
-		return Serdes.serdeFrom(serializer, deserializer);
-	}
+    public PixSerdes() {
+        super(new JsonSerializer<>(), new JsonDeserializer<>(PixDTO.class));
+    }
+
+    public static Serde<PixDTO> serdes() {
+        JsonSerializer<PixDTO> serializer = new JsonSerializer<>();
+        JsonDeserializer<PixDTO> deserializer = new JsonDeserializer<>(PixDTO.class);
+        return Serdes.serdeFrom(serializer, deserializer);
+    }
 }
