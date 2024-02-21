@@ -3,7 +3,7 @@
  *
  * DO NOT EDIT DIRECTLY
  */
-package com.alura.pix.avro;
+package br.com.kmpx.pixconsumer.avro;
 
 import org.apache.avro.generic.GenericArray;
 import org.apache.avro.specific.SpecificData;
@@ -238,8 +238,8 @@ public class PixRecord extends org.apache.avro.specific.SpecificRecordBase imple
    * Creates a new PixRecord RecordBuilder.
    * @return A new PixRecord RecordBuilder
    */
-  public static com.alura.pix.avro.PixRecord.Builder newBuilder() {
-    return new com.alura.pix.avro.PixRecord.Builder();
+  public static br.com.kmpx.pixconsumer.avro.PixRecord.Builder newBuilder() {
+    return new br.com.kmpx.pixconsumer.avro.PixRecord.Builder();
   }
 
   /**
@@ -247,11 +247,11 @@ public class PixRecord extends org.apache.avro.specific.SpecificRecordBase imple
    * @param other The existing builder to copy.
    * @return A new PixRecord RecordBuilder
    */
-  public static com.alura.pix.avro.PixRecord.Builder newBuilder(com.alura.pix.avro.PixRecord.Builder other) {
+  public static br.com.kmpx.pixconsumer.avro.PixRecord.Builder newBuilder(br.com.kmpx.pixconsumer.avro.PixRecord.Builder other) {
     if (other == null) {
-      return new com.alura.pix.avro.PixRecord.Builder();
+      return new br.com.kmpx.pixconsumer.avro.PixRecord.Builder();
     } else {
-      return new com.alura.pix.avro.PixRecord.Builder(other);
+      return new br.com.kmpx.pixconsumer.avro.PixRecord.Builder(other);
     }
   }
 
@@ -260,11 +260,11 @@ public class PixRecord extends org.apache.avro.specific.SpecificRecordBase imple
    * @param other The existing instance to copy.
    * @return A new PixRecord RecordBuilder
    */
-  public static com.alura.pix.avro.PixRecord.Builder newBuilder(com.alura.pix.avro.PixRecord other) {
+  public static br.com.kmpx.pixconsumer.avro.PixRecord.Builder newBuilder(br.com.kmpx.pixconsumer.avro.PixRecord other) {
     if (other == null) {
-      return new com.alura.pix.avro.PixRecord.Builder();
+      return new br.com.kmpx.pixconsumer.avro.PixRecord.Builder();
     } else {
-      return new com.alura.pix.avro.PixRecord.Builder(other);
+      return new br.com.kmpx.pixconsumer.avro.PixRecord.Builder(other);
     }
   }
 
@@ -291,7 +291,7 @@ public class PixRecord extends org.apache.avro.specific.SpecificRecordBase imple
      * Creates a Builder by copying an existing Builder.
      * @param other The existing Builder to copy.
      */
-    private Builder(com.alura.pix.avro.PixRecord.Builder other) {
+    private Builder(br.com.kmpx.pixconsumer.avro.PixRecord.Builder other) {
       super(other);
       if (isValidValue(fields()[0], other.identifier)) {
         this.identifier = data().deepCopy(fields()[0].schema(), other.identifier);
@@ -323,7 +323,7 @@ public class PixRecord extends org.apache.avro.specific.SpecificRecordBase imple
      * Creates a Builder by copying an existing PixRecord instance
      * @param other The existing instance to copy.
      */
-    private Builder(com.alura.pix.avro.PixRecord other) {
+    private Builder(br.com.kmpx.pixconsumer.avro.PixRecord other) {
       super(SCHEMA$);
       if (isValidValue(fields()[0], other.identifier)) {
         this.identifier = data().deepCopy(fields()[0].schema(), other.identifier);
@@ -365,7 +365,7 @@ public class PixRecord extends org.apache.avro.specific.SpecificRecordBase imple
       * @param value The value of 'identifier'.
       * @return This builder.
       */
-    public com.alura.pix.avro.PixRecord.Builder setIdentifier(java.lang.CharSequence value) {
+    public br.com.kmpx.pixconsumer.avro.PixRecord.Builder setIdentifier(java.lang.CharSequence value) {
       validate(fields()[0], value);
       this.identifier = value;
       fieldSetFlags()[0] = true;
@@ -385,7 +385,7 @@ public class PixRecord extends org.apache.avro.specific.SpecificRecordBase imple
       * Clears the value of the 'identifier' field.
       * @return This builder.
       */
-    public com.alura.pix.avro.PixRecord.Builder clearIdentifier() {
+    public br.com.kmpx.pixconsumer.avro.PixRecord.Builder clearIdentifier() {
       identifier = null;
       fieldSetFlags()[0] = false;
       return this;
@@ -405,7 +405,7 @@ public class PixRecord extends org.apache.avro.specific.SpecificRecordBase imple
       * @param value The value of 'chaveOrigem'.
       * @return This builder.
       */
-    public com.alura.pix.avro.PixRecord.Builder setChaveOrigem(java.lang.CharSequence value) {
+    public br.com.kmpx.pixconsumer.avro.PixRecord.Builder setChaveOrigem(java.lang.CharSequence value) {
       validate(fields()[1], value);
       this.chaveOrigem = value;
       fieldSetFlags()[1] = true;
@@ -425,7 +425,7 @@ public class PixRecord extends org.apache.avro.specific.SpecificRecordBase imple
       * Clears the value of the 'chaveOrigem' field.
       * @return This builder.
       */
-    public com.alura.pix.avro.PixRecord.Builder clearChaveOrigem() {
+    public br.com.kmpx.pixconsumer.avro.PixRecord.Builder clearChaveOrigem() {
       chaveOrigem = null;
       fieldSetFlags()[1] = false;
       return this;
@@ -445,7 +445,7 @@ public class PixRecord extends org.apache.avro.specific.SpecificRecordBase imple
       * @param value The value of 'chaveDestino'.
       * @return This builder.
       */
-    public com.alura.pix.avro.PixRecord.Builder setChaveDestino(java.lang.CharSequence value) {
+    public br.com.kmpx.pixconsumer.avro.PixRecord.Builder setChaveDestino(java.lang.CharSequence value) {
       validate(fields()[2], value);
       this.chaveDestino = value;
       fieldSetFlags()[2] = true;
@@ -465,7 +465,7 @@ public class PixRecord extends org.apache.avro.specific.SpecificRecordBase imple
       * Clears the value of the 'chaveDestino' field.
       * @return This builder.
       */
-    public com.alura.pix.avro.PixRecord.Builder clearChaveDestino() {
+    public br.com.kmpx.pixconsumer.avro.PixRecord.Builder clearChaveDestino() {
       chaveDestino = null;
       fieldSetFlags()[2] = false;
       return this;
@@ -485,7 +485,7 @@ public class PixRecord extends org.apache.avro.specific.SpecificRecordBase imple
       * @param value The value of 'valor'.
       * @return This builder.
       */
-    public com.alura.pix.avro.PixRecord.Builder setValor(double value) {
+    public br.com.kmpx.pixconsumer.avro.PixRecord.Builder setValor(double value) {
       validate(fields()[3], value);
       this.valor = value;
       fieldSetFlags()[3] = true;
@@ -505,7 +505,7 @@ public class PixRecord extends org.apache.avro.specific.SpecificRecordBase imple
       * Clears the value of the 'valor' field.
       * @return This builder.
       */
-    public com.alura.pix.avro.PixRecord.Builder clearValor() {
+    public br.com.kmpx.pixconsumer.avro.PixRecord.Builder clearValor() {
       fieldSetFlags()[3] = false;
       return this;
     }
@@ -524,7 +524,7 @@ public class PixRecord extends org.apache.avro.specific.SpecificRecordBase imple
       * @param value The value of 'dataTransferencia'.
       * @return This builder.
       */
-    public com.alura.pix.avro.PixRecord.Builder setDataTransferencia(java.lang.CharSequence value) {
+    public br.com.kmpx.pixconsumer.avro.PixRecord.Builder setDataTransferencia(java.lang.CharSequence value) {
       validate(fields()[4], value);
       this.dataTransferencia = value;
       fieldSetFlags()[4] = true;
@@ -544,7 +544,7 @@ public class PixRecord extends org.apache.avro.specific.SpecificRecordBase imple
       * Clears the value of the 'dataTransferencia' field.
       * @return This builder.
       */
-    public com.alura.pix.avro.PixRecord.Builder clearDataTransferencia() {
+    public br.com.kmpx.pixconsumer.avro.PixRecord.Builder clearDataTransferencia() {
       dataTransferencia = null;
       fieldSetFlags()[4] = false;
       return this;
@@ -564,7 +564,7 @@ public class PixRecord extends org.apache.avro.specific.SpecificRecordBase imple
       * @param value The value of 'status'.
       * @return This builder.
       */
-    public com.alura.pix.avro.PixRecord.Builder setStatus(java.lang.CharSequence value) {
+    public br.com.kmpx.pixconsumer.avro.PixRecord.Builder setStatus(java.lang.CharSequence value) {
       validate(fields()[5], value);
       this.status = value;
       fieldSetFlags()[5] = true;
@@ -584,7 +584,7 @@ public class PixRecord extends org.apache.avro.specific.SpecificRecordBase imple
       * Clears the value of the 'status' field.
       * @return This builder.
       */
-    public com.alura.pix.avro.PixRecord.Builder clearStatus() {
+    public br.com.kmpx.pixconsumer.avro.PixRecord.Builder clearStatus() {
       status = null;
       fieldSetFlags()[5] = false;
       return this;

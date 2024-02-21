@@ -13,8 +13,7 @@ import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.core.ProducerFactory;
 import org.springframework.kafka.support.serializer.JsonSerializer;
 
-import com.alura.pix.avro.PixRecord;
-
+import br.com.kmpx.pixproducer.avro.PixRecord;
 import io.confluent.kafka.serializers.KafkaAvroSerializer;
 
 @Configuration

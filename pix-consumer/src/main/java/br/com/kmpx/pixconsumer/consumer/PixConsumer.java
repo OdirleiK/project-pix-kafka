@@ -9,6 +9,7 @@ import org.springframework.kafka.support.Acknowledgment;
 import org.springframework.retry.annotation.Backoff;
 import org.springframework.stereotype.Service;
 
+import br.com.kmpx.pixconsumer.avro.PixRecord;
 import br.com.kmpx.pixconsumer.dto.PixDTO;
 import br.com.kmpx.pixconsumer.dto.PixStatus;
 import br.com.kmpx.pixconsumer.expection.KeyNotFoundException;
@@ -33,8 +34,8 @@ public class PixConsumer {
 	@RetryableTopic(backoff = @Backoff(value = 3000l),
 					autoCreateTopics = "true",
 					include = KeyNotFoundException.class)
-	public void consumePixMessage(PixDTO pixDTO) {
-		System.out.println("Pix  recebido: " + pixDTO.getIdentifier());
+	public void consumePixMessage(PixRecord pixRecord) {
+		System.out.println("Pix  recebido: " + pixRecord.getIdentifier());
 
 //        Pix pix = pixRepository.findByIdentifier(pixDTO.getIdentifier());
 //
