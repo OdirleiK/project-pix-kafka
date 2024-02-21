@@ -13,24 +13,11 @@ import br.com.kmpx.pixproducer.repositories.PixRepository;
 public class PixService {
 
 	@Autowired
-	private KafkaTemplate<String, PixRecord> kafkaTemplate;
-
-	@Autowired
 	private PixRepository pixRepository;
 
 	public PixDTO salvarPix (PixDTO pixDTO) { 
         pixRepository.save(Pix.toEntity(pixDTO));
 
-        PixRecord pixRecord = PixRecord.newBuilder()
-                            .setIdentifier(pixDTO.getIdentifier()) 
-                            .setChaveOrigem (pixDTO.getChaveOrigem()) 
-                            .setChaveDestino (pixDTO.getChaveDestino()) 
-                            .setStatus (pixDTO.getStatus().toString()) 
-                            .setDataTransferencia (pixDTO.getDataTransferencia().toString()) 
-                            .setValor (pixDTO.getValor()) 
-                            .build();
-
-        kafkaTemplate.send("pix-topic", pixDTO.getIdentifier(), pixRecord); 
         return pixDTO;
     }
 
