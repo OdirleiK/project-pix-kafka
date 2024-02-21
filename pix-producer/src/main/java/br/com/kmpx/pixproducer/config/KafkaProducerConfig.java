@@ -13,6 +13,10 @@ import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.core.ProducerFactory;
 import org.springframework.kafka.support.serializer.JsonSerializer;
 
+import com.alura.pix.avro.PixRecord;
+
+import io.confluent.kafka.serializers.KafkaAvroSerializer;
+
 @Configuration
 public class KafkaProducerConfig {
 
@@ -22,24 +26,25 @@ public class KafkaProducerConfig {
     }
 
     @Bean
-    public Map<String,Object> producerConfig(){
-        Map<String,Object> props=new HashMap<>();
+    public ProducerFactory<String, PixRecord> producerFactory(){
+        Map<String, Object> props = new HashMap<>();
         props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG,
                 "localhost:9092");
         props.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG,
                 StringSerializer.class);
-        props.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG,
-                JsonSerializer.class);
-        return props;
+        props.put(
+                "schema.registry.url", 
+                "http://localhost:8081");
+        props.put(
+                ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, 
+                KafkaAvroSerializer.class);
+ 
+        return new DefaultKafkaProducerFactory<>(props);
     }
 
-    @Bean
-    public ProducerFactory<String,Object> producerFactory(){
-        return new DefaultKafkaProducerFactory<>(producerConfig());
-    }
 
     @Bean
-    public KafkaTemplate<String,Object> kafkaTemplate(){
+    public KafkaTemplate<String,PixRecord> kafkaTemplate(){
         return new KafkaTemplate<>(producerFactory());
     }
 }
